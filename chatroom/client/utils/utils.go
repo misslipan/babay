@@ -60,9 +60,7 @@ func (this *Tranfans) Writepkg(data []byte) (err error) {
 		fmt.Println("发送长度失败", err)
 		return
 	}
-	fmt.Println("向服务器写入数据", string(data), this.buf[:4])
 	n, err = this.Conn.Write(data)
-	fmt.Println(n, "成功写入")
 	if n != int(pkg) || err != nil {
 		fmt.Println("发送长度失败", err)
 		return

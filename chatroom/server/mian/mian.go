@@ -8,7 +8,7 @@ import (
 
 //处理客户端通信
 func processr(conn net.Conn) {
-
+	defer conn.Close()
 	Pr := &Processr{
 		Conn: conn,
 	}
@@ -52,7 +52,6 @@ func main() {
 		//处理客户端
 
 		go processr(conn)
-		defer conn.Close()
 
 	}
 

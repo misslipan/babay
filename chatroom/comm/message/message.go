@@ -7,6 +7,7 @@ const (
 	RegisterErrType    = "Registererr"
 	NotifystatusType   = "NotifystatusType" //用户状态常量类型
 	SmsMsgSendType     = "Smsmsgsend"
+	SmsMsgOneType      = "OnevsOnesend" //一对一发送消息
 )
 
 const (
@@ -58,4 +59,5 @@ type Notifystatus struct {
 type SmsMsgSend struct {
 	Content string `json:"content"`
 	User
+	Friendid int `json:"friendid"`
 }

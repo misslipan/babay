@@ -27,10 +27,13 @@ func (this *Processr) ServerProce(msg *message.Message) (err error) {
 			Conn: this.Conn,
 		}
 		err = user.ServerProceRegister(msg)
-
+		//多人发送消息
 	case message.SmsMsgSendType:
 		Send := &process.SmsProcess{}
 		err = Send.SendGroupmsg(msg)
+	case message.SmsMsgOneType:
+		Send := &process.SmsProcess{}
+		err = Send.SendOnemsg(msg)
 	default:
 
 	}
@@ -46,7 +49,6 @@ func (this *Processr) Process1() (err error) {
 			Conn: this.Conn,
 		}
 		msgs, err := tf.Readpkg()
-		fmt.Println("客户端送消息", msgs)
 		if err != nil {
 
 			if err == io.EOF {

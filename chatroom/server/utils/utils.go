@@ -29,7 +29,6 @@ func (this *Tranfans) Readpkg() (msg message.Message, err error) {
 	pkglen = binary.BigEndian.Uint32(this.buf[:4])
 
 	n, err := this.Conn.Read(this.buf[:pkglen])
-	fmt.Println(string(this.buf[:]))
 	if n != int(pkglen) || err != nil {
 		err = errors.New("read pkg  neirong error")
 		return
